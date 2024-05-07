@@ -44,6 +44,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
+            justify-content: center;
         }
         
         .buttons button:first-child{
@@ -71,6 +72,13 @@
         .buttons button:last-child:hover{
             background-color: #d10000;
 
+        }
+
+
+        @media only screen and (max-width: 350px) {
+            input{
+                width: 80%;
+            }
         }
 
         
