@@ -1,13 +1,11 @@
 {
   "name": "electron-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "dizna encode decode",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "electron ."
   },
   "author": "Enes Ago",
   "license": "ISC",
