@@ -143,7 +143,7 @@ function clearEl() {
 }
 function encodeFn() {
     let initialRet = ''
-    let encInpVal = encoderInp.value;
+    let encInpVal = encoderInp.value.toUpperCase();
     const chars = encInpVal.split("");
     chars.forEach(element => {
         const foundEl = vals.find(el => el.letter==element)
@@ -155,7 +155,7 @@ function encodeFn() {
 
 function decodeFn() {
     let initialRet = ''
-    let encInpVal = encoderInp.value;
+    let encInpVal = encoderInp.value.toUpperCase();
     const chars = encInpVal.split(/(..)/g).filter(s => s);
     chars.forEach(element => {
         const foundEl = vals.find(el => el.value==element)
