@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+    <title>Encoder-Decoder</title>
+
+    <style>
+        *{
+            margin: 0;
+        }
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+        input{
+            color: #333;
+            font-size: 1.2rem;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            border-radius: 0.2rem;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid #000;
+            width: 300px;
+            display: block;
+            border-radius: 25px;
+        }
+        button{
+            width: 120px;
+            height: 50px;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .buttons{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .buttons button:first-child{
+            background-color: #0000FF;
+            color: #fff
+        }
+        .buttons button:first-child:hover{
+            background-color: #3434ff;
+
+        }
+
+
+        .buttons button:nth-child(2){
+            background-color: #FF8C00;
+            color: #fff
+        }
+        .buttons button:nth-child(2):hover{
+            background-color: #df7a00;
+        }
+
+        .buttons button:last-child{
+            background-color: #ff0000;
+            color: #fff
+        }
+        .buttons button:last-child:hover{
+            background-color: #d10000;
+
+        }
+
+
+        @media only screen and (max-width: 350px) {
+            input{
+                width: 80%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<input type="text" id="Encode" placeholder="Input">
+<input type="text" id="Decode" placeholder="Output">
+<div class="buttons">
+    <button onclick="encodeFn()">Encode</button>
+    <button onclick="decodeFn()">Decode</button>
+    <button onclick="clearEl()">Clear</button>
+
+</div>
+
+
+<script>
+
+    const encoderInp = document.getElementById("Encode")
+    const decoderInp = document.getElementById("Decode")
+
+
+    const vals = [
+        {"letter": "0", "value": "00"},
+        {"letter": "1", "value": "01"},
+        {"letter": "2", "value": "02"},
+        {"letter": "3", "value": "03"},
+        {"letter": "4", "value": "04"},
+        {"letter": "5", "value": "05"},
+        {"letter": "6", "value": "06"},
+        {"letter": "7", "value": "07"},
+        {"letter": "8", "value": "08"},
+        {"letter": "9", "value": "09"},
+        {"letter": "A", "value": "OA"},
+        {"letter": "B", "value": "OB"},
+        {"letter": "C", "value": "OC"},
+        {"letter": "D", "value": "OD"},
+        {"letter": "E", "value": "OE"},
+        {"letter": "F", "value": "OF"},
+        {"letter": "G", "value": "10"},
+        {"letter": "H", "value": "11"},
+        {"letter": "J", "value": "12"},
+        {"letter": "K", "value": "13"},
+        {"letter": "L", "value": "14"},
+        {"letter": "M", "value": "15"},
+        {"letter": "N", "value": "16"},
+        {"letter": "P", "value": "17"},
+        {"letter": "R", "value": "18"},
+        {"letter": "S", "value": "19"},
+        {"letter": "T", "value": "1A"},
+        {"letter": "U", "value": "1B"},
+        {"letter": "W", "value": "1C"},
+        {"letter": "X", "value": "1D"},
+        {"letter": "Y", "value": "1E"},
+        {"letter": "Z", "value": "1F"}
+    ]
+
+
+    function clearEl() {
+        encoderInp.value=""
+        decoderInp.value=""
+    }
+    function encodeFn() {
+        let initialRet = ''
+        let encInpVal = encoderInp.value.toUpperCase();
+        const chars = encInpVal.split("");
+        chars.forEach(element => {
+            const foundEl = vals.find(el => el.letter==element)
+            initialRet+=String(foundEl.value)
+        });
+        console.log()
+        decoderInp.value = initialRet
+    }
+
+    function decodeFn() {
+        let initialRet = ''
+        let encInpVal = encoderInp.value.toUpperCase();
+        const chars = encInpVal.split(/(..)/g).filter(s => s);
+        chars.forEach(element => {
+            const foundEl = vals.find(el => el.value==element)
+            initialRet+=String(foundEl.letter)
+        });
+        console.log()
+        decoderInp.value = initialRet
+    }
+
+
+</script>
+</body>
+</html>
